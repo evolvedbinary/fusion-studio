@@ -40,9 +40,9 @@
     "@theia/process": "latest",
     "@theia/terminal": "latest",
     "@theia/workspace": "latest",
-    "pebble-extension": "0.0.0",
-    "yargs": "^9.0.1",
-    "xterm": "^2.9.2"
+    "pebble-extension": "file:../pebble-extension/pebble-extension",
+    "xterm": "^2.9.2",
+    "yargs": "^9.0.1"
   },
   "devDependencies": {
     "@theia/cli": "latest",
