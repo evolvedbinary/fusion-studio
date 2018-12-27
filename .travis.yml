@@ -1,0 +1,37 @@
+dist: xenial
+osx_image: xcode10.1
+
+language: node_js
+node_js: "8"
+
+env:
+  global:
+    - ELECTRON_CACHE=$HOME/.cache/electron
+    - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
+
+os:
+  - linux
+  - osx
+
+cache:
+  directories:
+  - node_modules
+  - $HOME/.cache/electron
+  - $HOME/.cache/electron-builder
+  - $HOME/.npm/_prebuilds
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.2.1
+  - export PATH=$HOME/.yarn/bin:$PATH
+  - node --version && yarn --version && python --version
+  - git clone --depth=50 --branch=master https://github.com/evolvedbinary/pebble-extension.git $TRAVIS_BUILD_DIR/../pebble-extension
+
+install:
+  - pushd $TRAVIS_BUILD_DIR/../pebble-extension && yarn && yarn run sass && popd
+  - yarn 
+
+script:
+  yarn build && yarn package
+
+before_cache:
+  - rm -rf $HOME/.cache/electron-builder/wine
