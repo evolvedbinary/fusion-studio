@@ -1,7 +1,9 @@
 # Pebble
 [![Build Status](https://travis-ci.com/evolvedbinary/pebble.svg?branch=master)](https://travis-ci.com/evolvedbinary/pebble)
 
-An IDE and Management Tool for Granite
+An IDE and Management Tool for Granite.
+
+This repository holds the code for packaging the IDE as a client Desktop application. To use this with Granite you will also need the server-side API installed, you can find that here: [pebble-api](https://github.com/evolvedbinary/pebble-api).
 
 ## Building
 
