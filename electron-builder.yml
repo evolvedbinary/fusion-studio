@@ -42,12 +42,12 @@ dmg:
   contents:
     -
       x: 380
-      y: 240
+      y: 340
       type: link
       path: /Applications
     -
       x: 122
-      y: 240
+      y: 340
       type: file
 
 publish:
