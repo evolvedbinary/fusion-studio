@@ -38,4 +38,4 @@ $ cd pebble
 $ yarn && yarn build && yarn package
 ```
 
-Applications are in the `pebble/dist` folder.
+Desktop Applications are then available in the `pebble/dist` folder.
