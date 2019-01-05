@@ -50,5 +50,5 @@ dmg:
       y: 340
       type: file
 
-publish:
-  provider: github
+# publish:
+#   provider: github
