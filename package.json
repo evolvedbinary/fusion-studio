@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "theia build",
+    "start": "theia start",
     "package": "yarn run build && electron-builder",
     "package:all": "yarn run build && electron-builder -lmw"
   },
@@ -40,6 +41,7 @@
     "@theia/process": "latest",
     "@theia/terminal": "latest",
     "@theia/workspace": "latest",
+    "@theia/textmate-grammars": "latest",
     "pebble-extension": "file:../pebble-extension/pebble-extension",
     "xterm": "^2.9.2",
     "yargs": "^9.0.1"
