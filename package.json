@@ -1,14 +1,19 @@
 {
   "name": "pebble-electron",
   "version": "0.1.0",
-  "description": "Pebble Client",
+  "description": "Fusion Studio",
   "main": "src-gen/frontend/electron-main.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/evolvedbinary/pebble.git"
   },
   "theia": {
-    "target": "electron"
+    "target": "electron",
+    "frontend": {
+      "config": {
+        "applicationName": "Fusion Studio"
+      }
+    }
   },
   "scripts": {
     "build": "theia build",
