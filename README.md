@@ -1,7 +1,7 @@
-# Pebble
+# Fusion Studio
 [![Build Status](https://travis-ci.com/evolvedbinary/pebble.svg?branch=master)](https://travis-ci.com/evolvedbinary/pebble)
 
-An IDE and Management Tool for Granite.
+An IDE and Management Tool for Fusion DB.
 
 This repository holds the code for packaging the IDE as a client Desktop application. To use this with Granite you will also need the server-side API installed, you can find that here: [pebble-api](https://github.com/evolvedbinary/pebble-api).
 
@@ -27,7 +27,7 @@ First, build the pebble extension (**NOTE**: this step will not be needed in the
 ```bash
 $ git clone https://github.com/evolvedbinary/pebble-extension.git
 $ cd pebble-extension
-$ yarn && yarn run sass
+$ yarn
 $ cd ..
 ```
 
