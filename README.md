@@ -1,9 +1,9 @@
-# Pebble
-[![Build Status](https://travis-ci.com/evolvedbinary/pebble.svg?branch=master)](https://travis-ci.com/evolvedbinary/pebble)
+# Fusion Studio
+[![Build Status](https://travis-ci.com/evolvedbinary/fusion-studio.svg?branch=master)](https://travis-ci.com/evolvedbinary/fusion-studio)
 
-An IDE and Management Tool for Granite.
+An IDE and Management Tool for FusionDB.
 
-This repository holds the code for packaging the IDE as a client Desktop application. To use this with Granite you will also need the server-side API installed, you can find that here: [pebble-api](https://github.com/evolvedbinary/pebble-api).
+This repository holds the code for packaging the IDE as a client Desktop application. To use this with FusionDB you will also need the server-side API installed, you can find that here: [fusion-studio-api](https://github.com/evolvedbinary/fusion-studio-api).
 
 ## Building
 
@@ -23,19 +23,19 @@ This repository holds the code for packaging the IDE as a client Desktop applica
 * Java 8+ (Currently, Java 9 is not supported.)
 * Python 2.7.x (Python 3, is not supported.)
 
-First, build the pebble extension (**NOTE**: this step will not be needed in the near future):
+First, build the Fusion Studio extension (**NOTE**: this step will not be needed in the near future):
 ```bash
-$ git clone https://github.com/evolvedbinary/pebble-extension.git
-$ cd pebble-extension
+$ git clone https://github.com/evolvedbinary/fusion-studio-extension.git
+$ cd fusion-studio-extension
 $ yarn && yarn run sass
 $ cd ..
 ```
 
-Second, build the pebble application package:
+Second, build the Fusion Studio application package:
 ```bash
-$ git clone https://github.com/evolvedbinary/pebble.git
-$ cd pebble
+$ git clone https://github.com/evolvedbinary/fusion-studio.git
+$ cd fusion-studio
 $ yarn && yarn build && yarn package
 ```
 
-Desktop Applications are then available in the `pebble/dist` folder.
+Desktop Applications are then available in the `fusion-studio/dist` folder.
