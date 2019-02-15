@@ -44,7 +44,7 @@
     "@theia/textmate-grammars": "latest",
     "fusion-studio-extension": "file:../fusion-studio-extension/fusion-studio-extension",
     "xterm": "^2.9.2",
-    "yargs": "^9.0.1"
+    "yargs": "^13.2.0"
   },
   "devDependencies": {
     "@theia/cli": "latest",
