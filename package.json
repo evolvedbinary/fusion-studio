@@ -43,7 +43,7 @@
     "@theia/workspace": "latest",
     "@theia/textmate-grammars": "latest",
     "pebble-extension": "file:../fusion-studio-extension/pebble-extension",
-    "xterm": "^2.9.2",
+    "xterm": "^3.12.2",
     "yargs": "^9.0.1"
   },
   "devDependencies": {
