@@ -22,16 +22,9 @@ This repository holds the code for packaging the IDE as a client Desktop applica
 * Git 2.11+
 * Java 8+ (Currently, Java 9 is not supported.)
 * Python 2.7.x (Python 3, is not supported.)
-
-First, build the Fusion Studio extension (**NOTE**: this step will not be needed in the near future):
-```bash
-$ git clone https://github.com/evolvedbinary/fusion-studio-extension.git
-$ cd fusion-studio-extension
-$ yarn && yarn run sass
-$ cd ..
 ```
 
-Second, build the Fusion Studio application package:
+Build the Fusion Studio application package:
 ```bash
 $ git clone https://github.com/evolvedbinary/fusion-studio.git
 $ cd fusion-studio
