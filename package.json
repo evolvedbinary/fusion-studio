@@ -8,7 +8,12 @@
     "url": "git+https://github.com/evolvedbinary/fusion-studio.git"
   },
   "theia": {
-    "target": "electron"
+    "target": "electron",
+    "frontend": {
+      "config": {
+        "applicationName": "Fusion Studio"
+      }
+    }
   },
   "scripts": {
     "build": "theia build",
