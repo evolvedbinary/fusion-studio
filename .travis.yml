@@ -1,30 +1,39 @@
 dist: xenial
 osx_image: xcode10.1
+
 language: node_js
-node_js: '8'
+node_js:
+  - "8"
+
 env:
   global:
-  - ELECTRON_CACHE=$HOME/.cache/electron
-  - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
-  - YARN_GPG=no
+    - ELECTRON_CACHE=$HOME/.cache/electron
+    - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
+    - YARN_GPG=no
+
 os:
-- linux
-- osx
-- windows
+  - linux
+  - osx
+  - windows
+
 cache:
   directories:
   - node_modules
-  - "$HOME/.cache/electron"
-  - "$HOME/.cache/electron-builder"
-  - "$HOME/.npm/_prebuilds"
+  - $HOME/.cache/electron
+  - $HOME/.cache/electron-builder
+  - $HOME/.npm/_prebuilds
+
 before_install:
-- node --version && yarn --version && python --version
+  - node --version && yarn --version && python --version
 
 install:
-- yarn
-script: yarn build && yarn package
+  - yarn
+
+script:
+  - yarn build && yarn package
+
 before_cache:
-- rm -rf $HOME/.cache/electron-builder/wine
+  - rm -rf $HOME/.cache/electron-builder/wine
 
 addons:
   apt:
@@ -33,3 +42,6 @@ addons:
     packages:
       - libx11-dev
       - libxkbfile-dev
+  homebrew:
+    packages:
+      - yarn
