@@ -9,13 +9,13 @@ This repository holds the code for packaging the IDE as a client Desktop applica
 ## Building
 
 ### Prerequisites
-* Node.js 8.15.0
+* Node.js 10.16.3
     ```bash
-    $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
-    $ nvm install 8.15.0
+    $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+    $ nvm install 10
     ```
 
-* yarn 1.2.1+
+* yarn 1.17.3+
     ```bash
     $ npm install -g yarn
     ```
