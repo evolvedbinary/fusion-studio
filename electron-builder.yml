@@ -24,6 +24,8 @@ linux:
   icon: resources/icons
 
 nsis:
+  unicode: true
+  include: build/installer.nsh
   menuCategory: true
   oneClick: false
   perMachine: true
