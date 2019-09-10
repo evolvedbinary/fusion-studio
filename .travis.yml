@@ -35,7 +35,7 @@ install:
 
 script:
   - yarn build
-  - yarn package
+  - travis_wait yarn package
 
 before_cache:
   - rm -rf $ELECTRON_BUILDER_CACHE/wine
