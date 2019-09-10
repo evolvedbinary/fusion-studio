@@ -23,7 +23,6 @@ This repository holds the code for packaging the IDE as a client Desktop applica
 * Git 2.11+
 * Java 8+ (Currently, Java 9 is not supported.)
 * Python 2.7.x (Python 3, is not supported.)
-```
 
 Build the Fusion Studio application package:
 ```bash
