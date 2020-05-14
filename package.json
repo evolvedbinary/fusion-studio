@@ -50,7 +50,7 @@
     "@theia/electron": "latest",
     "@theia/textmate-grammars": "latest",
     "fusion-studio-extension": "latest",
-    "xterm": "4.1.0",
+    "xterm": "4.6.0",
     "yargs": "14.2.0"
   },
   "devDependencies": {
