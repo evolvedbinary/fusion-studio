@@ -55,6 +55,6 @@
   },
   "devDependencies": {
     "@theia/cli": "latest",
-    "electron-builder": "21.2.0"
+    "electron-builder": "22.6.1"
   }
 }
