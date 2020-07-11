@@ -35,9 +35,9 @@
   "dependencies": {
     "@theia/core": "latest",
     "@theia/editor": "latest",
+    "@theia/electron": "latest",
     "@theia/file-search": "latest",
     "@theia/filesystem": "latest",
-    "fs-extra": "8.1.0",
     "@theia/git": "latest",
     "@theia/languages": "latest",
     "@theia/markers": "latest",
@@ -47,14 +47,13 @@
     "@theia/process": "latest",
     "@theia/terminal": "latest",
     "@theia/workspace": "latest",
-    "@theia/electron": "latest",
-    "@theia/textmate-grammars": "latest",
+    "fs-extra": "9.0.1",
     "fusion-studio-extension": "latest",
-    "xterm": "4.1.0",
-    "yargs": "14.2.0"
+    "xterm": "^4.7.0",
+    "yargs": "^15.4.0"
   },
   "devDependencies": {
     "@theia/cli": "latest",
-    "electron-builder": "21.2.0"
+    "electron-builder": "^22.7.0"
   }
 }

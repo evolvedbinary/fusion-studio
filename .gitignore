@@ -9,3 +9,4 @@ src-gen
 webpack.config.js
 package-lock.json
 yarn.lock
+gen-webpack.config.js
