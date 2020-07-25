@@ -13,10 +13,16 @@ files:
 win:
   target:
     - nsis
+
+afterSign: electron-builder-notarize
+
 mac:
   identity: "Evolved Binary Ltd"
+  hardenedRuntime: true
+  entitlements: ./node_modules/electron-builder-notarize/entitlements.mac.inherit.plist
   target:
     - dmg
+
 linux:
   target:
     - deb
