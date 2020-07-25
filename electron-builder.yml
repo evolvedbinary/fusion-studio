@@ -19,6 +19,7 @@ mac:
 linux:
   target:
     - deb
+    - rpm
     - AppImage
   category: Development
   icon: resources/icons
@@ -51,6 +52,9 @@ dmg:
       x: 122
       y: 340
       type: file
+
+rpm:
+  packageCategory: Application/Databases
 
 # publish:
 #   provider: github
