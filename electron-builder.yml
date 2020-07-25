@@ -1,5 +1,5 @@
 productName: Fusion Studio
-appId: evolvedbinary.fusionstudio
+appId: com.evolvedbinary.fusion-studio
 
 asar: false
 directories:
@@ -38,7 +38,7 @@ nsis:
   uninstallerSidebar: resources/installerSidebar.bmp
   allowToChangeInstallationDirectory: true
   runAfterFinish: false
-  artifactName: ${productName}-Installer-${version}.${ext}
+  artifactName: fusion-studio-${version}-installer.${ext}
 dmg:
   background: resources/dmgInstaller.tiff
   icon: resources/icon.icns
@@ -53,12 +53,18 @@ dmg:
       x: 122
       y: 340
       type: file
+  artifactName: fusion-studio-${version}.${ext}
 
 deb:
   packageCategory: database
+  artifactName: fusion-studio-${version}.${ext}
 
 rpm:
   packageCategory: Application/Databases
+  artifactName: fusion-studio-${version}.${ext}
+
+appImage:
+  artifactName: fusion-studio-${version}.${ext}
 
 # publish:
 #   provider: github
