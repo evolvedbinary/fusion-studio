@@ -1,5 +1,6 @@
 productName: Fusion Studio
-appId: com.evolvedbinary.fusion-studio
+appId: com.fusiondb.fusionstudio
+copyright: Copyright © 2018 Evolved Binary Ltd
 
 asar: false
 directories:
