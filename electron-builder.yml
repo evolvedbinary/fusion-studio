@@ -53,6 +53,9 @@ dmg:
       y: 340
       type: file
 
+deb:
+  packageCategory: database
+
 rpm:
   packageCategory: Application/Databases
 
