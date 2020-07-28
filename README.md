@@ -25,7 +25,7 @@ This repository holds the code for packaging the IDE as a client Desktop applica
 * Java 8+ (Currently, Java 9 is not supported.)
 * Python 2.7.x (Python 3, is not supported.)
 
-Build the Fusion Studio application package:
+Build the Fusion Studio application package (for your platform):
 ```bash
 $ git clone https://github.com/evolvedbinary/fusion-studio.git
 $ cd fusion-studio
@@ -33,3 +33,17 @@ $ yarn && yarn build && yarn package
 ```
 
 Desktop Applications are then available in the `fusion-studio/dist` folder.
+
+## Building a Release
+
+Release packages are built for Linux, Mac, and Windows platforms.
+
+As code-signing of Mac packages can only be performed on macOS, we assume your starting point is a Mac with Docker installed.
+
+```
+$ git clone https://github.com/evolvedbinary/fusion-studio.git
+$ cd fusion-studio
+$ yarn && yarn build && yarn package
+
+$ docker run -it --volume "$(PWD)":/fusion-studio evolvedbinary/fusion-studio:centos7_x64-be '/bin/bash && cd /fusion-studio && yarn && yarn package'
+```
