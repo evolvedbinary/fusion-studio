@@ -1,5 +1,6 @@
 productName: Fusion Studio
-appId: evolvedbinary.fusionstudio
+appId: com.fusiondb.fusionstudio
+copyright: Copyright © 2018 Evolved Binary Ltd
 
 asar: false
 directories:
@@ -13,12 +14,20 @@ files:
 win:
   target:
     - nsis
+
+afterSign: electron-builder-notarize
+
 mac:
+  identity: "Evolved Binary Ltd"
+  hardenedRuntime: true
+  entitlements: ./node_modules/electron-builder-notarize/entitlements.mac.inherit.plist
   target:
     - dmg
+
 linux:
   target:
     - deb
+    - rpm
     - AppImage
   category: Development
   icon: resources/icons
@@ -36,7 +45,7 @@ nsis:
   uninstallerSidebar: resources/installerSidebar.bmp
   allowToChangeInstallationDirectory: true
   runAfterFinish: false
-  artifactName: ${productName}-Installer-${version}.${ext}
+  artifactName: fusion-studio-${version}-installer.${ext}
 dmg:
   background: resources/dmgInstaller.tiff
   icon: resources/icon.icns
@@ -51,6 +60,18 @@ dmg:
       x: 122
       y: 340
       type: file
+  artifactName: fusion-studio-${version}.${ext}
+
+deb:
+  packageCategory: database
+  artifactName: fusion-studio-${version}.${ext}
+
+rpm:
+  packageCategory: Application/Databases
+  artifactName: fusion-studio-${version}.${ext}
+
+appImage:
+  artifactName: fusion-studio-${version}.${ext}
 
 # publish:
 #   provider: github
