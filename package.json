@@ -1,6 +1,6 @@
 {
   "name": "fusion-studio-electron",
-  "version": "0.2.0",
+  "version": "1.0.3",
   "description": "Fusion Studio",
   "main": "src-gen/frontend/electron-main.js",
   "repository": {
@@ -33,27 +33,26 @@
     "See why `xterm` is an explicit dependency: https://github.com/theia-ide/theia/issues/737"
   ],
   "dependencies": {
-    "@theia/core": "latest",
-    "@theia/editor": "latest",
-    "@theia/electron": "latest",
-    "@theia/file-search": "latest",
-    "@theia/filesystem": "latest",
-    "@theia/git": "latest",
-    "@theia/languages": "latest",
-    "@theia/markers": "latest",
-    "@theia/monaco": "latest",
-    "@theia/navigator": "latest",
-    "@theia/preferences": "latest",
-    "@theia/process": "latest",
-    "@theia/terminal": "latest",
-    "@theia/workspace": "latest",
+    "@theia/core": "^1.5.0",
+    "@theia/editor": "^1.5.0",
+    "@theia/electron": "^1.5.0",
+    "@theia/file-search": "^1.5.0",
+    "@theia/filesystem": "^1.5.0",
+    "@theia/git": "^1.5.0",
+    "@theia/markers": "^1.5.0",
+    "@theia/monaco": "^1.5.0",
+    "@theia/navigator": "^1.5.0",
+    "@theia/preferences": "^1.5.0",
+    "@theia/process": "^1.5.0",
+    "@theia/terminal": "^1.5.0",
+    "@theia/workspace": "^1.5.0",
     "fs-extra": "9.0.1",
-    "fusion-studio-extension": "latest",
+    "fusion-studio-extension": "^1.0.0",
     "xterm": "^4.7.0",
     "yargs": "^15.4.0"
   },
   "devDependencies": {
-    "@theia/cli": "latest",
+    "@theia/cli": "^1.5.0",
     "electron-builder": "^22.7.0",
     "electron-builder-notarize": "^1.2.0"
   }
