@@ -7,13 +7,15 @@ An IDE and Management Tool for FusionDB.
 
 This repository holds the code for packaging the IDE as a client Desktop application. To use this with FusionDB you will also need the server-side API installed, you can find that here: [fusion-studio-api](https://github.com/evolvedbinary/fusion-studio-api).
 
+The latest reslease version is available for download from https://fusiondb.com.
+
 ## Building
 
 ### Prerequisites
-* Node.js 10.16.3
+* Node.js >= 12.18.3
     ```bash
     $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
-    $ nvm install 10
+    $ nvm install 12
     ```
 
 * yarn 1.17.3+
@@ -23,7 +25,7 @@ This repository holds the code for packaging the IDE as a client Desktop applica
 
 * Git 2.11+
 * Java 8+ (Currently, Java 9 is not supported.)
-* Python 2.7.x (Python 3, is not supported.)
+* Python 2.7.x or Python 3
 * rpmbuild (for building RPM's on Linux)
 * Apple Developer Certificate and Account (for signing DMG's on macOS)
 

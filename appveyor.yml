@@ -1,7 +1,7 @@
 version: '{branch}-{build}'
 
 environment:
-  nodejs_version: "10"
+  nodejs_version: 12
   YARN_GPG: no
 
   matrix:
@@ -14,7 +14,7 @@ cache:
   - '%APPDATA%\npm-cache'               # npm cache
 
 # used on Ubuntu
-stack: node 10
+stack: node 12
 
 install:
   - cmd: PowerShell.exe "Install-Product node $env:nodejs_version"
