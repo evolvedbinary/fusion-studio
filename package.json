@@ -49,7 +49,7 @@
     "fs-extra": "9.0.1",
     "fusion-studio-extension": "^1.0.0",
     "xterm": "^4.7.0",
-    "yargs": "^15.4.0"
+    "yargs": "^16.0.3"
   },
   "devDependencies": {
     "@theia/cli": "^1.5.0",
