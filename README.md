@@ -70,4 +70,22 @@ Remember, notarization can be a slow process which can take 10+ minutes with lit
 APPLE_ID=me@something.com APPLE_ID_PASSWORD=abcd-efgh-ijkl-mnop yarn package
 ```
 
-Application packages are then available in the `fusion-studio/dist` folder.
+Desktop Applications are then available in the `fusion-studio/dist` folder.
+
+## Building a Release
+
+Release packages are built for Linux, Mac, and Windows platforms.
+
+As code-signing of Mac packages can only be performed on macOS, we assume your starting point is a Mac with Docker installed.
+
+```
+$ git clone https://github.com/evolvedbinary/fusion-studio.git
+$ cd fusion-studio
+$ yarn && yarn build && yarn package
+
+$ docker run -ti \
+ --env USER=$UID \
+ --env GROUP=$GID \
+ -v ${PWD}:/project evolvedbinary/fusion-studio:centos7_x64-be \
+ /bin/bash -c "bash /root/build.sh"
+```
