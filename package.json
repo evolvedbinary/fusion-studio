@@ -28,10 +28,6 @@
     "url": "https://github.com/evolvedbinary/fusion-studio/issues"
   },
   "homepage": "https://github.com/evolvedbinary/fusion-studio#readme",
-  "//": [
-    "See why `yargs` is an explicit dependency: https://github.com/theia-ide/theia/issues/934",
-    "See why `xterm` is an explicit dependency: https://github.com/theia-ide/theia/issues/737"
-  ],
   "dependencies": {
     "@theia/core": "^1.15.0",
     "@theia/editor": "^1.15.0",
@@ -47,9 +43,7 @@
     "@theia/terminal": "^1.15.0",
     "@theia/workspace": "^1.15.0",
     "fs-extra": "9.0.1",
-    "fusion-studio-extension": "^1.2.0",
-    "xterm": "^4.7.0",
-    "yargs": "^16.0.3"
+    "fusion-studio-extension": "^1.2.0"
   },
   "devDependencies": {
     "@theia/cli": "^1.15.0",
