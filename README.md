@@ -42,7 +42,7 @@ npm install -g yarn
 git clone https://github.com/evolvedbinary/fusion-studio.git
 cd fusion-studio
 export NODE_OPTIONS="--max-old-space-size=8192"
-yarn && yarn build
+yarn install --ignore-engines && yarn build
 ```
 
 ### On Windows:
@@ -50,7 +50,7 @@ yarn && yarn build
 git clone https://github.com/evolvedbinary/fusion-studio.git
 cd fusion-studio
 set NODE_OPTIONS=--max-old-space-size=8192
-yarn && yarn build
+yarn install --ignore-engines && yarn build
 ```
 
 ## Creating Application Packages
