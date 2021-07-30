@@ -32,7 +32,7 @@ before_install:
   - node --version && yarn --version && python --version
 
 install:
-  - yarn
+  - yarn install --ignore-engines
 
 script:
   - yarn build

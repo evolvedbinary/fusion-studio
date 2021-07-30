@@ -20,8 +20,8 @@ install:
   - cmd: PowerShell.exe "Install-Product node $env:nodejs_version"
   - node --version && yarn --version && python --version
   - sh: sudo apt-get --yes install libx11-dev libxkbfile-dev rpm
-  - cmd: yarn
-  - sh: yarn
+  - cmd: yarn install --ignore-engines
+  - sh: yarn install --ignore-engines
 
 build_script:
   - yarn build && yarn package
