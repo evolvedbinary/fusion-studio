@@ -6,6 +6,4 @@ lib
 .metadata
 dist
 src-gen
-webpack.config.js
-package-lock.json
 gen-webpack.config.js
