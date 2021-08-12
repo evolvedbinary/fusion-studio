@@ -12,7 +12,7 @@ RUN yum -y update && \
   pip install argparse && \
   wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash && \
   source /root/.bashrc && \
-  nvm install 12 && \
+  nvm install 14 && \
   npm i -g yarn
 
 COPY force-download.js /root
