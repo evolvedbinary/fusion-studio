@@ -1,0 +1,33 @@
+version: 2.1
+# todo:
+# - have the builder image available for use here
+# - replicate travis + appveyour features in circle
+# - add notarisation signing for win/mac on circle
+# - consider writing a custom orb
+
+orbs:
+  node: circleci/node@4.7.0
+jobs:
+  compile:
+    executor:
+      name: node/default
+      tag: '14.17.5'
+    steps:
+      - checkout
+      - node/install:
+          install-yarn: true          
+          lts: true
+      # - node/install-packages:
+        # TODO: check if this is what we realy realy want
+          # override-ci-command: yarn install --ignore-engines
+          # pkg-manager: yarn
+      - run: node --version
+      - run: yarn --version
+workflows:
+  run-npm-command:
+    jobs:
+      - node/run:
+          pkg-manager: yarn
+          override-ci-command: yarn install --ignore-engines
+          yarn-run: yarn build
+          version: '14.17.5'
