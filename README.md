@@ -12,7 +12,7 @@ The latest reslease version of FusionDB is available for download from [https://
 
 
 ## Requirements
-* Node.js >= 12.18.3
+* Node.js 14
 * yarn 1.17.3+
 * Git 2.11+
 * Java 8
@@ -26,8 +26,8 @@ We suggest using [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) fo
 
 ```bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
-nvm install 12
-nvm use 12
+nvm install 14
+nvm use 14
 ```
 
 Install the latest version of yarn compatible with the recommended node version.
