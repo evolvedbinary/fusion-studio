@@ -17,23 +17,23 @@ jobs:
       tag: '14.17.5'
     steps:
       - checkout
-      - run: apt-get --yes install libx11-dev libxkbfile-dev
+      - run: sudo apt-get --yes install libx11-dev libxkbfile-dev
       - node/install:
           install-yarn: true          
-      #     lts: true
-      # - node/install-packages:
+      - node/install-packages:
         # TODO: check if this is what we realy realy want
-          # override-ci-command: yarn install --ignore-engines
-          # pkg-manager: yarn
+          override-ci-command: yarn install --ignore-engines
+          pkg-manager: yarn
       - run: node --version
       - run: yarn --version
+      - run: yarn build
 workflows:
   run-npm-command:
     jobs:
       - compile
-      - node/run:
-          # setup: apt-get --yes install libx11-dev libxkbfile-dev     
-          pkg-manager: yarn
-          override-ci-command: yarn install --ignore-engines
-          yarn-run: yarn build
-          version: '14.17.5'
+      # - node/run:
+      #     setup: apt-get --yes install libx11-dev libxkbfile-dev     
+      #     pkg-manager: yarn
+      #     override-ci-command: yarn install --ignore-engines
+      #     yarn-run: yarn build
+      #     version: '14.17.5'
