@@ -1,22 +1,26 @@
 version: 2.1
 # todo:
-# - have the builder image available for use here
 # - replicate travis + appveyour features in circle
 # - add notarisation signing for win/mac on circle
 # - consider writing a custom orb
+# - rebase all the circle stuff and squash
+# - add caching
 
 orbs:
+# see https://circleci.com/developer/orbs/orb/circleci/node
   node: circleci/node@4.7.0
 jobs:
   compile:
+  # todo switch to evolvedbinary/fs-build:centos7_x64-be
     executor:
       name: node/default
       tag: '14.17.5'
     steps:
       - checkout
+      - run: apt-get --yes install libx11-dev libxkbfile-dev
       - node/install:
           install-yarn: true          
-          lts: true
+      #     lts: true
       # - node/install-packages:
         # TODO: check if this is what we realy realy want
           # override-ci-command: yarn install --ignore-engines
@@ -26,7 +30,9 @@ jobs:
 workflows:
   run-npm-command:
     jobs:
+      - compile
       - node/run:
+          # setup: apt-get --yes install libx11-dev libxkbfile-dev     
           pkg-manager: yarn
           override-ci-command: yarn install --ignore-engines
           yarn-run: yarn build
