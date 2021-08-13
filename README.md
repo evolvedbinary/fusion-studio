@@ -86,6 +86,6 @@ $ yarn && yarn build && yarn package
 $ docker run -ti \
  --env USER=$UID \
  --env GROUP=$GID \
- -v ${PWD}:/project evolvedbinary/fusion-studio:centos7_x64-be \
+ -v ${PWD}:/project evolvedbinary/fs-build:centos7_x64-be \
  /bin/bash -c "bash /root/build.sh"
 ```
