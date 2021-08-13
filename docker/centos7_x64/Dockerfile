@@ -10,7 +10,7 @@ RUN yum -y update && \
   yum -y install https://harbottle.gitlab.io/wine32/7/i386/wine32-release.rpm && \
   yum -y install wine.i686 && \
   pip install argparse && \
-  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash && \
+  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash && \
   source /root/.bashrc && \
   nvm install 14 && \
   npm i -g yarn
