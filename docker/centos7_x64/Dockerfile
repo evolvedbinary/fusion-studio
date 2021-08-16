@@ -9,11 +9,20 @@ RUN yum -y update && \
   yum -y install openssl wget && \
   yum -y install https://harbottle.gitlab.io/wine32/7/i386/wine32-release.rpm && \
   yum -y install wine.i686 && \
+  yum clean all && \
   pip install argparse && \
   wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash && \
   source /root/.bashrc && \
   nvm install 14 && \
+  nvm use 14 && \
   npm i -g yarn
 
 COPY force-download.js /root
 COPY build.sh /root
+
+# TODO copy src files into image
+# TODO run build.sh in its own stage
+# TODO get more function calls out from external files and into the dockerfile so failures occur during docker build
+# TODO make a multi-stage image
+# TODO determine what to do in the final stage image that contains the binaries
+
