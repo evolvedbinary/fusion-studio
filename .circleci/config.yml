@@ -12,12 +12,14 @@ orbs:
 jobs:
   compile:
   # todo switch to evolvedbinary/fs-build:centos7_x64-be
-    executor:
-      name: node/default
-      tag: '14.17.5'
-    steps:
+     docker:
+      - image: 'evolvedbinary/fs-build:centos7_x64-be'
+    # executor:
+    #   name: node/default
+    #   tag: '14.17.5'
+     steps:
       - checkout
-      - run: sudo apt-get --yes install libx11-dev libxkbfile-dev
+      # - run: sudo apt-get --yes install libx11-dev libxkbfile-dev
       - node/install:
           install-yarn: true          
       - node/install-packages:
