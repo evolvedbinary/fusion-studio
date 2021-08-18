@@ -1,9 +1,12 @@
 version: 2.1
-# todo:
+# TODO:
+# - define artifacts and add steps
 # - add notarisation signing for win/mac on circle (post-step)
 # - squash circle commits
-# - add context for secrets 
-# - contact support about windows orb fail
+
+# KNOWN ISSUES
+# issues with cache (on win) see https://github.com/CircleCI-Public/node-orb/issues/61
+# why we need two jobs see https://github.com/circleci/circleci-docs/issues/5611
 
 orbs:
 # see https://circleci.com/developer/orbs/orb/circleci/node
@@ -14,16 +17,17 @@ executors:
   linux: &nix
     docker:
       - image: cimg/python:3.9.6-node
-        # auth:
-        #   username: mydockerhub-user
-        #   password: $DOCKERHUB_PASSWORD
-  windows: win/default
-  macos: # macos executor using xcode 11 should it be 12?
+        auth:
+          username: duncdrum
+          password: $DOCKER_TMP_PW
+  # (DP): broken see https://github.com/circleci/circleci-docs/issues/5611
+  # windows: win/default
+  macos:
     macos:
       xcode: 12.5.1
 
 jobs:
-  compile:
+  build-nix:
     parameters:
         os:
           type: executor
@@ -46,17 +50,49 @@ jobs:
           install-npm: false          
       - node/install-packages:
           cache-path: ~/project/node_modules
-        # TODO: check if this is what we want, what we really really want
           override-ci-command: yarn install --ignore-engines
           pkg-manager: yarn
       - run: node --version
       - run: yarn --version
       - run: yarn build
+  # (DP) build-win is a workaround for circleci-docs#5611
+  build-win:
+    parameters:
+        node-version:
+          type: string
+    executor: 
+      name: win/default
+      shell: bash.exe
+    steps:
+      - checkout 
+      - node/install:
+          node-version: << parameters.node-version >>
+          install-yarn: false
+          install-npm: false
+      # (DP): these steps are part of the workaround for CircleCI-Public/node-orb#61
+      - run: nvm use << parameters.node-version >>
+      - run: npm i -g yarn   
+      - run: yarn cache dir           
+      - node/install-packages:
+          #  see CircleCI-Public/node-orb#61
+          cache-path: C:\Users\circleci\AppData\Local\Yarn\Cache\v6
+          override-ci-command: yarn install --ignore-engines --cache-folder C:\Users\circleci\AppData\Local\Yarn\Cache\v6
+          pkg-manager: yarn
+      - run: node --version
+      - run: yarn --version
+      - run: yarn build       
+
+
 workflows:
   compile-all:
     jobs:
-      - compile:
+      - build-nix:
           matrix:
             parameters:
-              os: [linux, windows, macos]
+              os: [linux, macos]
               node-version: ["12.22.5", "14.17.5"]
+          context: FusionDB_images  
+      - build-win:
+          matrix:
+            parameters:
+              node-version: ["12.22.5", "14.17.5"]        
