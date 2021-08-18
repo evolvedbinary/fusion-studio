@@ -1,6 +1,6 @@
 version: 2.1
 # TODO:
-# - define artifacts and add steps
+# - define artifacts and add steps https://circleci.com/docs/2.0/artifacts/
 # - add notarisation signing for win/mac on circle (post-step)
 # - squash circle commits
 
@@ -43,7 +43,7 @@ jobs:
             - run: 
                 command: |
                     sudo apt-get update
-                    sudo apt-get install -y libx11-dev libxkbfile-dev libsecret-1-0   
+                    sudo apt-get install -y libx11-dev libxkbfile-dev libsecret-1-0 rpm  
       - node/install:
           node-version: << parameters.node-version >>
           install-yarn: true
@@ -54,7 +54,8 @@ jobs:
           pkg-manager: yarn
       - run: node --version
       - run: yarn --version
-      - run: yarn build
+      # - run: yarn build     
+      - run: yarn package
   # (DP) build-win is a workaround for circleci-docs#5611
   build-win:
     parameters:
@@ -80,7 +81,8 @@ jobs:
           pkg-manager: yarn
       - run: node --version
       - run: yarn --version
-      - run: yarn build       
+      # - run: yarn build 
+      - run: yarn package       
 
 
 workflows:
@@ -90,9 +92,9 @@ workflows:
           matrix:
             parameters:
               os: [linux, macos]
-              node-version: ["12.22.5", "14.17.5"]
+              node-version: ["14.17.5"]
           context: FusionDB_images  
       - build-win:
           matrix:
             parameters:
-              node-version: ["12.22.5", "14.17.5"]        
+              node-version: ["14.17.5"]        
