@@ -1,12 +1,11 @@
 version: 2.1
 # TODO:
-# - define artifacts and add steps https://circleci.com/docs/2.0/artifacts/
 # - add notarisation signing for win/mac on circle (post-step)
-# - squash circle commits
 
 # KNOWN ISSUES
-# issues with cache (on win) see https://github.com/CircleCI-Public/node-orb/issues/61
+# issues with cache (on win) see https://github.com/CircleCI-Public/node-orb/issues/61 it is not working
 # why we need two jobs see https://github.com/circleci/circleci-docs/issues/5611
+# sem-ver portion of artifact file-names is currently hard-coded, pending strategy decisions on what to do with artifacts
 
 orbs:
 # see https://circleci.com/developer/orbs/orb/circleci/node
@@ -54,8 +53,30 @@ jobs:
           pkg-manager: yarn
       - run: node --version
       - run: yarn --version
-      # - run: yarn build     
-      - run: yarn package
+      - run: 
+          command: yarn package
+          no_output_timeout: 15m
+      # Artifacts
+      - unless:
+          condition: 
+            equal: [<<parameters.os>>, *nix]
+          steps: 
+            - store_artifacts: 
+                path: dist/fusion-studio-1.0.3.dmg
+                destination: macOS
+      - when:
+          condition: 
+            equal: [<<parameters.os>>, *nix]
+          steps:    
+            - store_artifacts: 
+                path: dist/fusion-studio-1.0.3.deb
+                destination: Linux
+            - store_artifacts: 
+                path: dist/fusion-studio-1.0.3.AppImage
+                destination: Linux
+            - store_artifacts: 
+                path: dist/fusion-studio-1.0.3.rpm
+                destination: Linux        
   # (DP) build-win is a workaround for circleci-docs#5611
   build-win:
     parameters:
@@ -75,14 +96,16 @@ jobs:
       - run: npm i -g yarn   
       - run: yarn cache dir           
       - node/install-packages:
-          #  see CircleCI-Public/node-orb#61
+          #  see CircleCI-Public/node-orb#61 cache is borked
           cache-path: C:\Users\circleci\AppData\Local\Yarn\Cache\v6
           override-ci-command: yarn install --ignore-engines --cache-folder C:\Users\circleci\AppData\Local\Yarn\Cache\v6
           pkg-manager: yarn
       - run: node --version
       - run: yarn --version
-      # - run: yarn build 
-      - run: yarn package       
+      - run: yarn package
+      - store_artifacts: 
+          path: dist/fusion-studio-1.0.3-installer.exe
+          destination: Windows    
 
 
 workflows:
