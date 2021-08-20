@@ -62,20 +62,20 @@ jobs:
             equal: [<<parameters.os>>, *nix]
           steps: 
             - store_artifacts: 
-                path: dist/fusion-studio-1.0.3.dmg
+                path: dist/fusion-studio-2.0.0-next.0.dmg
                 destination: macOS
       - when:
           condition: 
             equal: [<<parameters.os>>, *nix]
           steps:    
             - store_artifacts: 
-                path: dist/fusion-studio-1.0.3.deb
+                path: dist/fusion-studio-2.0.0-next.0.deb
                 destination: Linux
             - store_artifacts: 
-                path: dist/fusion-studio-1.0.3.AppImage
+                path: dist/fusion-studio-2.0.0-next.0.AppImage
                 destination: Linux
             - store_artifacts: 
-                path: dist/fusion-studio-1.0.3.rpm
+                path: dist/fusion-studio-2.0.0-next.0.rpm
                 destination: Linux        
   # (DP) build-win is a workaround for circleci-docs#5611
   build-win:
@@ -104,7 +104,7 @@ jobs:
       - run: yarn --version
       - run: yarn package
       - store_artifacts: 
-          path: dist/fusion-studio-1.0.3-installer.exe
+          path: dist/fusion-studio-2.0.0-next.0-installer.exe
           destination: Windows    
 
 
