@@ -7,3 +7,4 @@ lib
 dist
 src-gen
 gen-webpack.config.js
+.vscode/

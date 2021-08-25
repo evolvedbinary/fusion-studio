@@ -1,41 +1,123 @@
 version: 2.1
-# todo:
-# - replicate travis + appveyour features in circle
-# - add notarisation signing for win/mac on circle
-# - consider writing a custom orb
-# - rebase all the circle stuff and squash
-# - add caching
+# TODO:
+# - add notarisation signing for win/mac on circle (post-step)
+
+# KNOWN ISSUES
+# issues with cache (on win) see https://github.com/CircleCI-Public/node-orb/issues/61 it is not working
+# why we need two jobs see https://github.com/circleci/circleci-docs/issues/5611
+# sem-ver portion of artifact file-names is currently hard-coded, pending strategy decisions on what to do with artifacts
 
 orbs:
 # see https://circleci.com/developer/orbs/orb/circleci/node
+# see https://circleci.com/developer/orbs/orb/circleci/windows
   node: circleci/node@4.7.0
+  win: circleci/windows@2.4.1
+executors:
+  linux: &nix
+    docker:
+      - image: cimg/python:3.9.6-node
+        auth:
+          username: duncdrum
+          password: $DOCKER_TMP_PW
+  # (DP): broken see https://github.com/circleci/circleci-docs/issues/5611
+  # windows: win/default
+  macos:
+    macos:
+      xcode: 12.5.1
+
 jobs:
-  compile:
-  # todo switch to evolvedbinary/fs-build:centos7_x64-be
-     docker:
-      - image: 'evolvedbinary/fs-build:centos7_x64-be'
-    # executor:
-    #   name: node/default
-    #   tag: '14.17.5'
-     steps:
+  build-nix:
+    parameters:
+        os:
+          type: executor
+        node-version:
+          type: string
+    executor: << parameters.os >>      
+    steps:
       - checkout
-      # - run: sudo apt-get --yes install libx11-dev libxkbfile-dev
+      - when:
+          condition: 
+            equal: [<<parameters.os>>, *nix]
+          steps:
+            - run: 
+                command: |
+                    sudo apt-get update
+                    sudo apt-get install -y libx11-dev libxkbfile-dev libsecret-1-0 rpm  
       - node/install:
-          install-yarn: true          
+          node-version: << parameters.node-version >>
+          install-yarn: true
+          install-npm: false          
       - node/install-packages:
-        # TODO: check if this is what we realy realy want
+          cache-path: ~/project/node_modules
           override-ci-command: yarn install --ignore-engines
           pkg-manager: yarn
       - run: node --version
       - run: yarn --version
-      - run: yarn build
+      - run: 
+          command: yarn package
+          no_output_timeout: 15m
+      # Artifacts
+      - unless:
+          condition: 
+            equal: [<<parameters.os>>, *nix]
+          steps: 
+            - store_artifacts: 
+                path: dist/fusion-studio-2.0.0-next.0.dmg
+                destination: macOS
+      - when:
+          condition: 
+            equal: [<<parameters.os>>, *nix]
+          steps:    
+            - store_artifacts: 
+                path: dist/fusion-studio-2.0.0-next.0.deb
+                destination: Linux
+            - store_artifacts: 
+                path: dist/fusion-studio-2.0.0-next.0.AppImage
+                destination: Linux
+            - store_artifacts: 
+                path: dist/fusion-studio-2.0.0-next.0.rpm
+                destination: Linux        
+  # (DP) build-win is a workaround for circleci-docs#5611
+  build-win:
+    parameters:
+        node-version:
+          type: string
+    executor: 
+      name: win/default
+      shell: bash.exe
+    steps:
+      - checkout 
+      - node/install:
+          node-version: << parameters.node-version >>
+          install-yarn: false
+          install-npm: false
+      # (DP): these steps are part of the workaround for CircleCI-Public/node-orb#61
+      - run: nvm use << parameters.node-version >>
+      - run: npm i -g yarn   
+      - run: yarn cache dir           
+      - node/install-packages:
+          #  see CircleCI-Public/node-orb#61 cache is borked
+          cache-path: C:\Users\circleci\AppData\Local\Yarn\Cache\v6
+          override-ci-command: yarn install --ignore-engines --cache-folder C:\Users\circleci\AppData\Local\Yarn\Cache\v6
+          pkg-manager: yarn
+      - run: node --version
+      - run: yarn --version
+      - run: yarn package
+      - store_artifacts: 
+          path: dist/fusion-studio-2.0.0-next.0-installer.exe
+          destination: Windows    
+
+
 workflows:
-  run-npm-command:
+  compile-all:
     jobs:
-      - compile
-      # - node/run:
-      #     setup: apt-get --yes install libx11-dev libxkbfile-dev     
-      #     pkg-manager: yarn
-      #     override-ci-command: yarn install --ignore-engines
-      #     yarn-run: yarn build
-      #     version: '14.17.5'
+      - build-nix:
+          matrix:
+            parameters:
+              os: [linux, macos]
+              node-version: ["14.17.5"]
+          context: FusionDB_images  
+      - build-win:
+          matrix:
+            parameters:
+              node-version: ["14.17.5"]        
