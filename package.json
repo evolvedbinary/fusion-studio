@@ -1,6 +1,6 @@
 {
   "name": "fusion-studio-electron",
-  "version": "1.0.3",
+  "version": "2.0.0-next.0",
   "description": "Fusion Studio",
   "main": "src-gen/frontend/electron-main.js",
   "repository": {
@@ -28,32 +28,30 @@
     "url": "https://github.com/evolvedbinary/fusion-studio/issues"
   },
   "homepage": "https://github.com/evolvedbinary/fusion-studio#readme",
-  "//": [
-    "See why `yargs` is an explicit dependency: https://github.com/theia-ide/theia/issues/934",
-    "See why `xterm` is an explicit dependency: https://github.com/theia-ide/theia/issues/737"
-  ],
   "dependencies": {
-    "@theia/core": "^1.5.0",
-    "@theia/editor": "^1.5.0",
-    "@theia/electron": "^1.5.0",
-    "@theia/file-search": "^1.5.0",
-    "@theia/filesystem": "^1.5.0",
-    "@theia/git": "^1.5.0",
-    "@theia/markers": "^1.5.0",
-    "@theia/monaco": "^1.5.0",
-    "@theia/navigator": "^1.5.0",
-    "@theia/preferences": "^1.5.0",
-    "@theia/process": "^1.5.0",
-    "@theia/terminal": "^1.5.0",
-    "@theia/workspace": "^1.5.0",
-    "fs-extra": "9.0.1",
-    "fusion-studio-extension": "^1.0.0",
-    "xterm": "^4.7.0",
-    "yargs": "^16.0.3"
+    "@theia/core": "1.15.0",
+    "@theia/editor": "1.15.0",
+    "@theia/electron": "1.15.0",
+    "@theia/file-search": "1.15.0",
+    "@theia/filesystem": "1.15.0",
+    "@theia/git": "1.15.0",
+    "@theia/markers": "1.15.0",
+    "@theia/monaco": "1.15.0",
+    "@theia/navigator": "1.15.0",
+    "@theia/preferences": "1.15.0",
+    "@theia/process": "1.15.0",
+    "@theia/terminal": "1.15.0",
+    "@theia/workspace": "1.15.0",
+    "fs-extra": "10.0.0",
+    "fusion-studio-extension": "^2.0.0-next",
+    "xterm": "^4.13.0",
+    "xterm-addon-fit": "^0.5.0",
+    "xterm-addon-search": "^0.8.0",
+    "yargs": "^17.1.1"
   },
   "devDependencies": {
-    "@theia/cli": "^1.5.0",
-    "electron-builder": "^22.7.0",
+    "@theia/cli": "^1.15.0",
+    "electron-builder": "^22.11.7",
     "electron-builder-notarize": "^1.2.0"
   }
 }

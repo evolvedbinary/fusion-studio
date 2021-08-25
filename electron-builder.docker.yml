@@ -1,0 +1,32 @@
+productName: FusionStudio
+appId: com.fusiondb.fusionstudio
+copyright: Copyright © 2018 Evolved Binary Ltd
+
+asar: false
+directories:
+  buildResources: resources
+files:
+  - 'src-gen'
+  - 'lib'
+  - 'node_modules'
+  - 'scripts'
+  - package.json
+
+win:
+  target:
+    - zip
+
+mac:
+  identity: "Evolved Binary Ltd"
+  hardenedRuntime: true
+  target:
+    - zip
+
+linux:
+  target:
+    - AppImage
+  category: Development
+  icon: resources/icons
+
+appImage:
+  artifactName: fusion-studio-${version}.${ext}
