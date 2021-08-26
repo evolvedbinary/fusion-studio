@@ -116,8 +116,12 @@ workflows:
             parameters:
               os: [linux, macos]
               node-version: ["14.17.5"]
-          context: FusionDB_images  
+          context:
+            - FusionStudio
+            - FusionDB_images
       - build-win:
           matrix:
             parameters:
-              node-version: ["14.17.5"]        
+              node-version: ["14.17.5"]
+          context:
+            - FusionStudio
