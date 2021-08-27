@@ -40,7 +40,7 @@
     "@theia/navigator": "1.15.0",
     "@theia/preferences": "1.15.0",
     "@theia/process": "1.15.0",
-    "@theia/terminal": "1.15.0",
+    "@theia/terminal": "1.17.0",
     "@theia/workspace": "1.15.0",
     "fs-extra": "10.0.0",
     "fusion-studio-extension": "^2.0.0-next",
