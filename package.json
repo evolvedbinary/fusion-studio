@@ -31,7 +31,7 @@
   "dependencies": {
     "@theia/core": "1.15.0",
     "@theia/editor": "1.15.0",
-    "@theia/electron": "1.15.0",
+    "@theia/electron": "1.17.0",
     "@theia/file-search": "1.15.0",
     "@theia/filesystem": "1.15.0",
     "@theia/git": "1.15.0",
