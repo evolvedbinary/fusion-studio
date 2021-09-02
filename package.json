@@ -35,7 +35,7 @@
     "@theia/file-search": "1.15.0",
     "@theia/filesystem": "1.15.0",
     "@theia/git": "1.15.0",
-    "@theia/markers": "1.15.0",
+    "@theia/markers": "1.17.2",
     "@theia/monaco": "1.15.0",
     "@theia/navigator": "1.15.0",
     "@theia/preferences": "1.15.0",
