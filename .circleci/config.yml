@@ -56,6 +56,17 @@ jobs:
       - run: 
           command: yarn package
           no_output_timeout: 15m
+      - run:
+          name: add server to known hosts
+          command: |
+            mkdir -p ~/.ssh
+            ssh-keyscan static.evolvedbinary.com >> ~/.ssh/known_hosts
+      - add_ssh_keys:
+          fingerprints:
+            - "3b:f6:39:ee:37:d3:5a:3f:c5:cd:45:9c:15:6a:44:36"
+      - run:
+          name: Uploading prebuilt binaries
+          command: ./upload-prebuilt-binaries.sh
       # Artifacts
       - unless:
           condition: 
@@ -103,6 +114,17 @@ jobs:
       - run: node --version
       - run: yarn --version
       - run: yarn package
+      - run:
+          name: add server to known hosts
+          command: |
+            mkdir -p ~/.ssh
+            ssh-keyscan static.evolvedbinary.com >> ~/.ssh/known_hosts
+      - add_ssh_keys:
+          fingerprints:
+            - "3b:f6:39:ee:37:d3:5a:3f:c5:cd:45:9c:15:6a:44:36"
+      - run:
+          name: Uploading prebuilt binaries
+          command: ./upload-prebuilt-binaries.sh win
       - store_artifacts: 
           path: dist/fusion-studio-2.0.0-next.0-installer.exe
           destination: Windows    
