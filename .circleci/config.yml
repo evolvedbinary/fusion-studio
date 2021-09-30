@@ -115,6 +115,12 @@ jobs:
       - run: yarn --version
       - run: yarn package
       - run:
+          name: Install latest version of OpenSSH
+          command: |
+              choco install openssh
+              echo 'export PATH=$(echo $PATH | sed '"'"'s/\\/c\\/Windows\\/System32\\/OpenSSH/\\/c\\/Program\\ Files\\/OpenSSH-Win64\\/ssh/g'"'"')' >> $BASH_ENV
+              source $BASH_ENV
+      - run:
           name: add server to known hosts
           command: |
             mkdir -p ~/.ssh
