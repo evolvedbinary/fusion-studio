@@ -1,12 +1,12 @@
 # !/bin/sh
 source /root/.bashrc
 source scl_source enable devtoolset-8
-yarn config set drivelist_binary_host https://pear.evolvedbinary.com/fusion-studio/prebuild/drivelist
-yarn config set @theia/node-pty_binary_host https://pear.evolvedbinary.com/fusion-studio/prebuild/node-pty
-yarn config set find-git-repositories_binary_host https://pear.evolvedbinary.com/fusion-studio/prebuild/find-git-repositories
-yarn config set native-keymap_binary_host https://pear.evolvedbinary.com/fusion-studio/prebuild/native-keymap
-yarn config set nsfw_binary_host https://pear.evolvedbinary.com/fusion-studio/prebuild/nsfw
-yarn config set oniguruma_binary_host https://pear.evolvedbinary.com/fusion-studio/prebuild/oniguruma
+export npm_config_drivelist_binary_host=https://static.evolvedbinary.com/fusion-studio-bin/drivelist
+export npm_config__theia_node_pty_binary_host=https://static.evolvedbinary.com/fusion-studio-bin/node-pty
+export npm_config_find_git_repositories_binary_host=https://static.evolvedbinary.com/fusion-studio-bin/find-git-repositories
+export npm_config_native_keymap_binary_host=https://static.evolvedbinary.com/fusion-studio-bin/native-keymap
+export npm_config_nsfw_binary_host=https://static.evolvedbinary.com/fusion-studio-bin/nsfw
+export npm_config_oniguruma_binary_host=https://static.evolvedbinary.com/fusion-studio-bin/oniguruma
 cp /root/force-download.js /project
 cd /project
 if [ -d /project/node_modules ]; then
