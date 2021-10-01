@@ -33,7 +33,7 @@
     "@theia/editor": "1.15.0",
     "@theia/electron": "1.15.0",
     "@theia/file-search": "1.15.0",
-    "@theia/filesystem": "1.15.0",
+    "@theia/filesystem": "1.18.0",
     "@theia/git": "1.15.0",
     "@theia/markers": "1.15.0",
     "@theia/monaco": "1.15.0",
